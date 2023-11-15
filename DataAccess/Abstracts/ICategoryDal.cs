@@ -1,4 +1,5 @@
-﻿using Entities.Concretes;
+﻿using Core.DataAccess;
+using Entities.Concretes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,3 +12,4 @@ namespace DataAccess.Abstracts
     {
     }
 }
+    

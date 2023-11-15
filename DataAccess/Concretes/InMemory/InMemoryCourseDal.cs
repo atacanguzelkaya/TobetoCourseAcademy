@@ -1,5 +1,6 @@
 ﻿using DataAccess.Abstracts;
 using Entities.Concretes;
+using Entities.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -59,6 +60,11 @@ namespace DataAccess.Concretes.InMemory
         public List<Course> GetAll()
         {
             return _courses;
+        }
+
+        public List<CourseDetailDto> GetCourseDetails()
+        {
+            throw new NotImplementedException();
         }
     }
 }

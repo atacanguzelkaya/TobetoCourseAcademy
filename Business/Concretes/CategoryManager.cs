@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Business.Abstracts;
 using DataAccess.Abstracts;
+using DataAccess.Concretes.EntityFramework;
 
 namespace Business.Concretes
 {
@@ -20,6 +21,11 @@ namespace Business.Concretes
         public List<Category> GetAll()
         {
             return _categoryDal.GetAll();
+        }
+        //Select * from Categories where categoryId = 3
+        public List<Category> GetById(int categoryId)
+        {
+            return _categoryDal.GetAll(c => c.Id == categoryId);
         }
     }
 }

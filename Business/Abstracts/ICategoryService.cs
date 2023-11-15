@@ -10,5 +10,6 @@ namespace Business.Abstracts
     public interface ICategoryService
     {
         List<Category> GetAll();
+        List<Category> GetById(int categoryId);
     }
 }
