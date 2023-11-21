@@ -23,14 +23,20 @@ namespace Business.Concretes
 
         public IResult Add(Course course)
         {
-            //buisness codes
-            if (course.Name.Length < 2) 
+            //business codes
+            if (course.Name.Length < 2)
             {   //magic strings
                 return new ErrorResult(Messages.CourseNameInvalid);
             }
-    
-             _courseDal.Add(course);
+
+            _courseDal.Add(course);
             return new SuccessResult(Messages.CourseAdded);
+        }
+
+        public IResult Delete(Course course)
+        {
+            _courseDal.Delete(course);
+            return new SuccessResult(Messages.CourseDeleted);
         }
 
         public IDataResult<List<Course>> GetAll()
@@ -40,7 +46,7 @@ namespace Business.Concretes
                 return new ErrorDataResult<List<Course>>(Messages.MaintenanceTime);
             }
 
-            return new SuccessDataResult<List<Course>>(_courseDal.GetAll(),Messages.CourseListed);
+            return new SuccessDataResult<List<Course>>(_courseDal.GetAll(), Messages.CourseListed);
         }
 
         public IDataResult<List<Course>> GetAllByCategoryId(int id)
@@ -62,6 +68,12 @@ namespace Business.Concretes
             //}
 
             return new SuccessDataResult<List<CourseDetailDto>>(_courseDal.GetCourseDetails());
+        }
+
+        public IResult Update(Course course)
+        {
+            _courseDal.Update(course);
+            return new SuccessResult(Messages.CourseUpdated);
         }
     }
 }

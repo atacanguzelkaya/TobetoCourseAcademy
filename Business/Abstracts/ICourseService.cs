@@ -16,5 +16,7 @@ namespace Business.Abstracts
         IDataResult<List<CourseDetailDto>> GetCourseDetails();
         IDataResult<Course> GetById(int courseId);
         IResult Add(Course course);
+        IResult Update(Course course);
+        IResult Delete(Course course);
     }
 }
