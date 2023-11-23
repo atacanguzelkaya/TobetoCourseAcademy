@@ -41,10 +41,10 @@ namespace Business.Concretes
 
         public IDataResult<List<Course>> GetAll()
         {
-            if (DateTime.Now.Hour == 22)
-            {
-                return new ErrorDataResult<List<Course>>(Messages.MaintenanceTime);
-            }
+            //if (DateTime.Now.Hour == 22)
+            //{
+            //    return new ErrorDataResult<List<Course>>(Messages.MaintenanceTime);
+            //}
 
             return new SuccessDataResult<List<Course>>(_courseDal.GetAll(), Messages.CourseListed);
         }
