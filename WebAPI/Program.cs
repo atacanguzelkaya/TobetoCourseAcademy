@@ -1,5 +1,8 @@
+using Autofac.Extensions.DependencyInjection;
+using Autofac;
 using Business.Abstracts;
 using Business.Concretes;
+using Business.DependencyResolvers.Autofac;
 using DataAccess.Abstracts;
 using DataAccess.Concretes.EntityFramework;
 
@@ -9,6 +12,11 @@ internal class Program
     {
         var builder = WebApplication.CreateBuilder(args);
 
+        //AutoFac Ekleme kismi
+        builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory());
+        builder.Host.ConfigureContainer<ContainerBuilder>(
+        builder => builder.RegisterModule(new AutofacBusinessModule()));
+
         // Add services to the container.
 
         builder.Services.AddControllers();
@@ -16,14 +24,14 @@ internal class Program
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen();
 
-        builder.Services.AddSingleton<ICourseService, CourseManager>();
-        builder.Services.AddSingleton<ICourseDal, EfCourseDal>();
+        //builder.Services.AddSingleton<ICourseService, CourseManager>();
+        //builder.Services.AddSingleton<ICourseDal, EfCourseDal>();
 
-        builder.Services.AddSingleton<ICategoryService, CategoryManager>();
-        builder.Services.AddSingleton<ICategoryDal, EfCategoryDal>();
+        //builder.Services.AddSingleton<ICategoryService, CategoryManager>();
+        //builder.Services.AddSingleton<ICategoryDal, EfCategoryDal>();
 
-        builder.Services.AddSingleton<IInstructorService, InstructorManager>();
-        builder.Services.AddSingleton<IInstructorDal, EfInstructorDal>();
+        //builder.Services.AddSingleton<IInstructorService, InstructorManager>();
+        //builder.Services.AddSingleton<IInstructorDal, EfInstructorDal>();
 
         var app = builder.Build();
 

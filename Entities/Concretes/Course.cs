@@ -14,7 +14,7 @@ namespace Entities.Concretes
         public int InstructorId { get; set; } // Instructor Foreign Key yani bir kurs bir eğitmen sahip
         public string Name { get; set; }
         public string Description { get; set; }
-        public decimal Price { get; set; }
+        public int Price { get; set; }
         public Category? Category { get; set; }
         public Instructor? Instructor { get; set; }
 
